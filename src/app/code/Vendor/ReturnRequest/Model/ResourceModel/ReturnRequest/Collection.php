@@ -21,5 +21,22 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         );
         $this->_map['fields']['entity_id'] = 'main_table.return_id';
     }
+
+    /**
+     * Init Select
+     *
+     * @return $this
+     */
+    protected function _initSelect()
+    {
+        parent::_initSelect();
+        $this->getSelect()->joinLeft(
+            ['ce' => $this->getTable('customer_entity')],
+            'main_table.customer_id = ce.entity_id',
+            ['customer_email' => 'email']
+        );
+        $this->addFilterToMap('customer_email', 'ce.email');
+        return $this;
+    }
 }
 

@@ -12,13 +12,13 @@
         <argument name="dataProvider" xsi:type="configurableObject">
         <argument name="class" xsi:type="string">Vendor\ReturnRequest\Ui\DataProvider\ReturnRequest\Listing</argument>
         <argument name="name" xsi:type="string">returnrequest_listing_data_source</argument>
-        <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
-        <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+        <argument name="primaryFieldName" xsi:type="string">return_id</argument>
+        <argument name="requestFieldName" xsi:type="string">return_id</argument>
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
             <item name="update_url" xsi:type="url" path="mui/index/render" />
             <item name="storageConfig" xsi:type="array">
-                <item name="indexField" xsi:type="string">entity_id</item>
+                <item name="indexField" xsi:type="string">return_id</item>
             </item>
             </item>
         </argument>
@@ -30,6 +30,34 @@
         </argument>
     </dataSource>
 
+    <filters name="listing_filters">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="columnsProvider" xsi:type="string">returnrequest_listing.returnrequest_listing.return_request_listing_columns</item>
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">returnrequest_listing.returnrequest_listing.listing_top.bookmarks</item>
+                    <item name="namespace" xsi:type="string">current.filters</item>
+                </item>
+                <item name="templates" xsi:type="array">
+                    <item name="filters" xsi:type="array">
+                        <item name="select" xsi:type="array">
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                            <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                        </item>
+                    </item>
+                </item>
+                <item name="childDefaults" xsi:type="array">
+                    <item name="provider" xsi:type="string">returnrequest_listing.returnrequest_listing.listing_top.listing_filters</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="visible" xsi:type="string">returnrequest_listing.returnrequest_listing.return_request_listing_columns.${ $.index }:visible</item>
+                    </item>
+                </item>
+            </item>
+            <item name="observers" xsi:type="array">
+                <item name="column" xsi:type="string">column</item>
+            </item>
+        </argument>
+    </filters>
     <massaction name="listing_massaction">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
@@ -82,7 +110,7 @@
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="indexField" xsi:type="string">entity_id</item>
+                    <item name="indexField" xsi:type="string">return_id</item>
                 </item>
             </argument>
         </selectionsColumn>
@@ -94,7 +122,7 @@
         <column name="return_id">
             <settings>
                 <sortable>true</sortable>
-                <filter>text</filter>
+                <filter>textRange</filter>
                 <label translate="true">Return Id</label>
             </settings>
         </column>
@@ -105,14 +133,15 @@
                 <label translate="true">Status</label>
             </settings>
         </column>
-        <column name="order_id">
+        <column name="order_id" class="Vendor\ReturnRequest\Ui\Component\Listing\Columns\OrderLink">
             <settings>
                 <sortable>true</sortable>
-                <filter>text</filter>
+                <filter>textRange</filter>
                 <label translate="true">Order Id</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
             </settings>
         </column>
-        <column name="customer_id" class="Vendor\ReturnRequest\Ui\Component\Listing\Columns\GetCustomerEmail">
+        <column name="customer_email">
             <settings>
                 <sortable>true</sortable>
                 <filter>text</filter>
@@ -136,7 +165,7 @@
         <column name="created_at">
             <settings>
                 <sortable>true</sortable>
-                <filter>text</filter>
+                <filter>dateRange</filter>
                 <label translate="true">Created At</label>
             </settings>
         </column>
