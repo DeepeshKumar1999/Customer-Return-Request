@@ -1,0 +1,31 @@
+<form action="<?= $block->escapeUrl($block->getPostUrl()) ?>"
+      method="post"
+      enctype="multipart/form-data"
+      data-mage-init='{"validation":{}}'>
+    <?= $block->getBlockHtml('formkey'); ?>
+    <input type="hidden" name="order_id" value="<?= (int)$block->getOrderId() ?>" />
+    <fieldset class="fieldset">
+        <div class="field required">
+            <label class="label"><?= $block->escapeHtml(__('Reason')) ?></label>
+            <select name="reason" class="required-entry">
+                <option value=""><?= __('Please select') ?></option>
+                <option value="damaged"><?= __('Damaged product') ?></option>
+                <option value="wrong"><?= __('Wrong item') ?></option>
+                <option value="quality"><?= __('Quality issue') ?></option>
+            </select>
+        </div>
+        <div class="field required">
+            <label class="label"><?= $block->escapeHtml(__('Description')) ?></label>
+            <textarea name="description" class="required-entry"></textarea>
+        </div>
+        <div class="field">
+            <label class="label"><?= $block->escapeHtml(__('Upload Image')) ?></label>
+            <input type="file" name="image" accept="<?= $block->escapeHtmlAttr($block->getAllowedImageTypes()) ?>"/>
+        </div>
+        <div class="actions">
+            <button type="submit" class="action primary">
+                <span><?= __('Submit Request') ?></span>
+            </button>
+        </div>
+    </fieldset>
+</form>
