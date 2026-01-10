@@ -1,0 +1,55 @@
+<?php /** @var \Vendor\ReturnRequest\Block\Order\Returns $block */ ?>
+<?php
+$returns = $block->getReturnRequests();
+$mediaUrl = $block->getMediaUrl();
+?>
+
+<?php if ($returns && $returns->getSize()): ?>
+    <table class="data table">
+        <thead>
+            <tr>
+                <th><?= __('Return ID') ?></th>
+                <th><?= __('Image') ?></th>
+                <th><?= __('Order ID') ?></th>
+                <th><?= __('Reason') ?></th>
+                <th><?= __('Status') ?></th>
+                <th><?= __('Requested At') ?></th>
+                <th><?= __('Action') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($returns as $return): ?>
+                <tr>
+                    <td><?= $return->getReturnId() ?></td>
+                    <td>
+                        <?php if ($return->getImage()): ?>
+                            <a href="<?= $block->getMediaUrl() . $return->getImage() ?>"
+                            target="_blank">
+                                <img src="<?= $block->getMediaUrl() . $return->getImage() ?>"
+                                    width="60"
+                                    alt="<?= __('Return Image') ?>" />
+                            </a>
+                        <?php else: ?>
+                            <?= __('N/A') ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <a href="<?= $block->getOrderUrl($return->getOrderId()) ?>">
+                            <?= $block->escapeHtml($return->getOrderId()) ?>
+                        </a>
+                    </td>
+                    <td><?= $block->escapeHtml($return->getReason()) ?></td>
+                    <td><?= $block->escapeHtml($return->getStatus() ?? __("Pending")) ?></td>
+                    <td><?= $block->escapeHtml($return->getCreatedAt()) ?></td>
+                    <td>
+                        <a href="<?= $block->getReturnRequestUrl($return->getReturnId()) ?>">
+                            <?= $block->escapeHtml(__("View")) ?>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p><?= __('You have not requested any returns yet.') ?></p>
+<?php endif; ?>

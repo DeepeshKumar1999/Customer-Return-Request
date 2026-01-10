@@ -56,7 +56,7 @@ class Save extends Action
             ]);
             $model->save();
             $this->messageManager->addSuccessMessage(__('Return request submitted successfully.'));
-            return $this->_redirect('sales/order/history');
+            return $this->_redirect('returnrequest/request/index');
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage(__('Unable to submit return request.'));
             return $this->_redirectReferer();

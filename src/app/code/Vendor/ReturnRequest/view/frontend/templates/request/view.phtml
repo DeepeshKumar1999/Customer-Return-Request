@@ -1,0 +1,43 @@
+<?php $return = $block->getReturnRequest(); ?>
+
+<table class="data table">
+    <tr>
+        <th><?= __('Order ID') ?></th>
+        <td>
+            <a href="<?= $block->getOrderUrl($return->getOrderId()) ?>">
+                <?= $block->escapeHtml($return->getOrderId()) ?>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th><?= __('Image') ?></th>
+        <td>
+            <?php if ($return->getImage()): ?>
+                <a href="<?= $block->getMediaUrl() . $return->getImage() ?>"
+                target="_blank">
+                    <img src="<?= $block->getMediaUrl() . $return->getImage() ?>"
+                        width="60"
+                        alt="<?= __('Return Image') ?>" />
+                </a>
+            <?php else: ?>
+                <?= __('N/A') ?>
+            <?php endif; ?>
+        </td>
+    </tr>
+    <tr>
+        <th><?= __('Reason') ?></th>
+        <td><?= $return->getReason() ?></td>
+    </tr>
+    <tr>
+        <th><?= __('Description') ?></th>
+        <td><?= $return->getDescription() ?></td>
+    </tr>
+    <tr>
+        <th><?= __('Status') ?></th>
+        <td><?= ucfirst($return->getStatus()) ?></td>
+    </tr>
+    <tr>
+        <th><?= __('Created At') ?></th>
+        <td><?= $return->getCreatedAt() ?></td>
+    </tr>
+</table>

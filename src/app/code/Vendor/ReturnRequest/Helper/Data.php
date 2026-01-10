@@ -14,6 +14,19 @@ class Data extends AbstractHelper
     public const XML_PATH_ENABLE = 'returnrequest/general/enable';
 
     /**
+     * Dependency Initilization
+     *
+     * @param \Magento\Framework\App\Helper\Context $context
+     * @param \Magento\Framework\Serialize\SerializerInterface $serializer
+     */
+    public function __construct(
+        \Magento\Framework\App\Helper\Context $context,
+        protected \Magento\Framework\Serialize\SerializerInterface $serializer
+    ) {
+        parent::__construct($context);
+    }
+
+    /**
      * Check if return request feature is enabled
      *
      * @param int|null $storeId
@@ -90,5 +103,27 @@ class Data extends AbstractHelper
         return implode(',', array_map(static function ($type) {
             return '.' . strtolower($type);
         }, $types));
+    }
+
+    /**
+     * Json Encode
+     *
+     * @param  array $arr
+     * @return array
+     */
+    public function jsonEncode($arr = [])
+    {
+        return $this->serializer->serialize($arr);
+    }
+
+    /**
+     * Json Decode
+     *
+     * @param string $str
+     * @return array
+     */
+    public function jsonDecode($str)
+    {
+        return $this->serializer->unserialize($str);
     }
 }

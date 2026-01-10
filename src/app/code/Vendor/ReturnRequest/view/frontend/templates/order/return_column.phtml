@@ -9,6 +9,10 @@
             <a href="<?= $block->escapeUrl($block->getReturnUrl()) ?>">
                 <?= $block->escapeHtml(__('Request Return')) ?>
             </a>
+        <?php } else { ?>
+            <a href="<?= $block->escapeUrl($block->getReturnRequestUrl($request)) ?>">
+                <?= $block->escapeHtml(__('View Return Request')) ?>
+            </a>
         <?php }
     } else { ?>
         <span>-</span>
