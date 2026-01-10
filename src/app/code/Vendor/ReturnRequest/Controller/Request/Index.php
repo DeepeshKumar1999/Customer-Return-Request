@@ -8,6 +8,13 @@ use Magento\Customer\Model\Session;
 
 class Index extends Action
 {
+    /**
+     * Dependency Initilization
+     *
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     * @param Session $customerSession
+     */
     public function __construct(
         Context $context,
         protected PageFactory $resultPageFactory,
@@ -16,15 +23,18 @@ class Index extends Action
         parent::__construct($context);
     }
 
+    /**
+     * Execute
+     *
+     * @return \Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         if (!$this->customerSession->isLoggedIn()) {
             return $this->_redirect('customer/account/login');
         }
-
         $resultPage = $this->resultPageFactory->create();
         $resultPage->getConfig()->getTitle()->set(__('My Returns'));
-
         return $resultPage;
     }
 }

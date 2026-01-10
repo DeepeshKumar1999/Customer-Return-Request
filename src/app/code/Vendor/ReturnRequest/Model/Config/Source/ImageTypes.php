@@ -5,6 +5,11 @@ use Magento\Framework\Data\OptionSourceInterface;
 
 class ImageTypes implements OptionSourceInterface
 {
+    /**
+     * To Option Array
+     *
+     * @return array
+     */
     public function toOptionArray()
     {
         return [

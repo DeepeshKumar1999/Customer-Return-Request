@@ -9,7 +9,7 @@
             <tab>sales</tab>
             <resource>Magento_Sales::config_sales</resource>
             <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>General Settings</label>
+                <label>Return Requests General Settings</label>
                 <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enable</label>
                     <comment>Enable Module</comment>
@@ -29,14 +29,11 @@
                         <field id="enable">1</field>
                     </depends>
                 </field>
-                <field id="max_image_size" translate="label comment"
-                       type="text"
-                       sortOrder="30"
-                       showInDefault="1"
-                       showInWebsite="1"
-                       showInStore="1">
-                    <label>Max Image Size (MB)</label>
-                    <comment>Maximum upload size in MB (e.g. 2)</comment>
+                <field id="return_reasons" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Return Reasons</label>
+                    <frontend_model>Vendor\ReturnRequest\Model\Config\Frontend\ReturnReasons</frontend_model>
+                    <backend_model>Vendor\ReturnRequest\Model\Config\Backend\ReturnReasons</backend_model>
+                    <comment>Add return reasons which customer can select while creating the return request.</comment>
                     <depends>
                         <field id="enable">1</field>
                     </depends>

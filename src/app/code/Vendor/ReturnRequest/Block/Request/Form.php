@@ -7,6 +7,14 @@ use \Vendor\ReturnRequest\Helper\Data as HelperData;
 
 class Form extends Template
 {
+    /**
+     * Dependency Initilization
+     *
+     * @param Template\Context $context
+     * @param Session $customerSession
+     * @param HelperData $helper
+     * @param array $data
+     */
     public function __construct(
         Template\Context $context,
         protected Session $customerSession,
@@ -16,16 +24,31 @@ class Form extends Template
         parent::__construct($context, $data);
     }
 
+    /**
+     * Get Order Id
+     *
+     * @return int
+     */
     public function getOrderId()
     {
         return (int)$this->getRequest()->getParam('order_id');
     }
 
+    /**
+     * Get Post Url
+     *
+     * @return string
+     */
     public function getPostUrl()
     {
         return $this->getUrl('returnrequest/request/save');
     }
 
+    /**
+     * Get Allowed Image Types
+     *
+     * @return string
+     */
     public function getAllowedImageTypes()
     {
         $types = $this->helper->getAllowedImageTypes();
@@ -33,5 +56,15 @@ class Form extends Template
             return '';
         }
         return implode(',', $types);
+    }
+
+    /**
+     * Get Return Reason List
+     *
+     * @return array
+     */
+    public function getReturnReasonList()
+    {
+        return $this->helper->getReturnReasonList();
     }
 }

@@ -8,11 +8,23 @@ use Magento\Customer\Model\Session;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\MediaStorage\Model\File\UploaderFactory;
+use Vendor\ReturnRequest\Helper\Data;
 
 class Save extends Action
 {
+    /**
+     * Dependency Initilization
+     *
+     * @param Context $context
+     * @param Data $helperData
+     * @param ReturnRequestFactory $returnFactory
+     * @param Session $customerSession
+     * @param Filesystem $filesystem
+     * @param UploaderFactory $uploaderFactory
+     */
     public function __construct(
         Context $context,
+        protected Data $helperData,
         protected ReturnRequestFactory $returnFactory,
         protected Session $customerSession,
         protected Filesystem $filesystem,
@@ -21,6 +33,11 @@ class Save extends Action
         parent::__construct($context);
     }
 
+    /**
+     * Execute
+     *
+     * @return \Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         if (!$this->customerSession->isLoggedIn()) {
@@ -35,7 +52,8 @@ class Save extends Action
             $imageName = null;
             if ($file && !empty($file['name'])) {
                 $uploader = $this->uploaderFactory->create(['fileId' => 'image']);
-                $uploader->setAllowedExtensions(['jpg','jpeg','png']);
+                $allowedTypes = $this->helperData->getAllowedImageTypes();
+                $uploader->setAllowedExtensions($allowedTypes);
                 $uploader->setAllowRenameFiles(true);
 
                 $mediaDir = $this->filesystem

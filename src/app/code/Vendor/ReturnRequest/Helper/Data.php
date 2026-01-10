@@ -9,9 +9,9 @@ use Magento\Store\Model\ScopeInterface;
 class Data extends AbstractHelper
 {
     /** XML config paths */
-    public const XML_PATH_ALLOWED_TYPES = 'returnrequest/general/allowed_image_types';
-    public const XML_PATH_MAX_IMAGE_SIZE = 'returnrequest/general/max_image_size';
     public const XML_PATH_ENABLE = 'returnrequest/general/enable';
+    public const XML_PATH_ALLOWED_TYPES = 'returnrequest/general/allowed_image_types';
+    public const XML_PATH_RETURN_REASONS = 'returnrequest/general/return_reasons';
 
     /**
      * Dependency Initilization
@@ -58,31 +58,40 @@ class Data extends AbstractHelper
             ScopeInterface::SCOPE_STORE,
             $storeId
         );
-
         if (is_array($value)) {
             return array_filter($value);
         }
-
         if (is_string($value) && $value !== '') {
             return array_map('trim', explode(',', $value));
         }
-
         return [];
     }
 
     /**
-     * Get max image size in MB
+     * Get Return Reason List
+     *
+     * Handles both:
+     * - multiselect (comma-separated string)
+     * - array (safe fallback)
      *
      * @param int|null $storeId
-     * @return int
+     * @return array
      */
-    public function getMaxImageSize(?int $storeId = null): int
+    public function getReturnReasonList(?int $storeId = null): array
     {
-        return (int)$this->scopeConfig->getValue(
-            self::XML_PATH_MAX_IMAGE_SIZE,
+        $value = $this->scopeConfig->getValue(
+            self::XML_PATH_RETURN_REASONS,
             ScopeInterface::SCOPE_STORE,
             $storeId
         );
+        $reasons = [];
+        if (!empty($value)) {
+            $value = $this->jsonDecode($value);
+            foreach ($value as $reason) {
+                $reasons[$reason['key']] = $reason['value'];
+            }
+        }
+        return $reasons;
     }
 
     /**
@@ -95,11 +104,9 @@ class Data extends AbstractHelper
     public function getAllowedImageAccept(?int $storeId = null): string
     {
         $types = $this->getAllowedImageTypes($storeId);
-
         if (empty($types)) {
             return '';
         }
-
         return implode(',', array_map(static function ($type) {
             return '.' . strtolower($type);
         }, $types));

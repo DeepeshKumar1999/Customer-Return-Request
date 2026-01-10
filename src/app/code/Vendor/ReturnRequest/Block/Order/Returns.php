@@ -8,6 +8,15 @@ use Magento\Store\Model\StoreManagerInterface;
 
 class Returns extends Template
 {
+    /**
+     * Dependency Initilization
+     *
+     * @param Template\Context $context
+     * @param ReturnCollectionFactory $collectionFactory
+     * @param StoreManagerInterface $storeManager
+     * @param Session $customerSession
+     * @param array $data
+     */
     public function __construct(
         Template\Context $context,
         protected ReturnCollectionFactory $collectionFactory,
@@ -64,6 +73,11 @@ class Returns extends Template
         );
     }
 
+    /**
+     * Get Media Url
+     *
+     * @return string
+     */
     public function getMediaUrl(): string
     {
         return $this->storeManager

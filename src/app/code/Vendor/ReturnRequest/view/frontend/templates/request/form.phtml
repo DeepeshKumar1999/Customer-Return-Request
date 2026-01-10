@@ -9,9 +9,16 @@
             <label class="label"><?= $block->escapeHtml(__('Reason')) ?></label>
             <select name="reason" class="required-entry">
                 <option value=""><?= __('Please select') ?></option>
-                <option value="damaged"><?= __('Damaged product') ?></option>
-                <option value="wrong"><?= __('Wrong item') ?></option>
-                <option value="quality"><?= __('Quality issue') ?></option>
+                <?php
+                $reasonList = $block->getReturnReasonList();
+                foreach ($reasonList as $key => $reason) {
+                    ?>
+                    <option value="<?= $block->escapeHtml($key) ?>">
+                        <?= $block->escapeHtml(__($reason)) ?>
+                    </option>
+                    <?php
+                }
+                ?>
             </select>
         </div>
         <div class="field required">

@@ -7,6 +7,14 @@ use Magento\Store\Model\StoreManagerInterface;
 
 class View extends Template
 {
+    /**
+     * Dependency Initilization
+     *
+     * @param Template\Context $context
+     * @param ReturnRequestRepositoryInterface $returnRequestRepositoryInterface
+     * @param StoreManagerInterface $storeManager
+     * @param array $data
+     */
     public function __construct(
         Template\Context $context,
         protected ReturnRequestRepositoryInterface $returnRequestRepositoryInterface,
@@ -16,6 +24,11 @@ class View extends Template
         parent::__construct($context, $data);
     }
 
+    /**
+     * Get Return Request
+     *
+     * @return bool|int
+     */
     public function getReturnRequest()
     {
         $returnId = (int)$this->getRequest()->getParam('return_id');
@@ -27,6 +40,11 @@ class View extends Template
         return false;
     }
 
+    /**
+     * Get Media Url
+     *
+     * @return string
+     */
     public function getMediaUrl(): string
     {
         return $this->storeManager
