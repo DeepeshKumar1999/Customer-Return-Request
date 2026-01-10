@@ -12,6 +12,9 @@ class Data extends AbstractHelper
     public const XML_PATH_ENABLE = 'returnrequest/general/enable';
     public const XML_PATH_ALLOWED_TYPES = 'returnrequest/general/allowed_image_types';
     public const XML_PATH_RETURN_REASONS = 'returnrequest/general/return_reasons';
+    public const XML_PATH_RETURN_STATUS_NEW = 'new';
+    public const XML_PATH_RETURN_STATUS_APPROVED = 'approved';
+    public const XML_PATH_RETURN_STATUS_REJECTED = 'rejected';
 
     /**
      * Dependency Initilization
@@ -65,6 +68,25 @@ class Data extends AbstractHelper
             return array_map('trim', explode(',', $value));
         }
         return [];
+    }
+
+    /**
+     * Get Return Reason Status
+     *
+     * Handles both:
+     * - multiselect (comma-separated string)
+     * - array (safe fallback)
+     *
+     * @param int|null $storeId
+     * @return array
+     */
+    public function getReturnReasonStatus(): array
+    {
+        return [
+            self::XML_PATH_RETURN_STATUS_NEW => __('New'),
+            self::XML_PATH_RETURN_STATUS_APPROVED => __('Approved'),
+            self::XML_PATH_RETURN_STATUS_REJECTED => __('Rejected')
+        ];
     }
 
     /**

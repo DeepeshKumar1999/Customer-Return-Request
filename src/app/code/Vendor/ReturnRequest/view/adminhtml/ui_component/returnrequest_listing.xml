@@ -37,15 +37,41 @@
                 <item name="indexField" xsi:type="string">entity_ids</item>
             </item>
         </argument>
-        <action name="delete">
+        <action name="new">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="type" xsi:type="string">delete</item>
-                    <item name="label" xsi:type="string" translate="true">Delete</item>
-                    <item name="url" xsi:type="url" path="*/*/massdelete"/>
+                    <item name="type" xsi:type="string">new</item>
+                    <item name="label" xsi:type="string" translate="true">New</item>
+                    <item name="url" xsi:type="url" path="*/*/massnew"/>
                     <item name="confirm" xsi:type="array">
-                        <item name="title" xsi:type="string" translate="true">Delete</item>
-                        <item name="message" xsi:type="string" translate="true">Are you sure you want to delete selected return request(s)?</item>
+                        <item name="title" xsi:type="string" translate="true">New</item>
+                        <item name="message" xsi:type="string" translate="true">Are you sure you want to update the status to new?</item>
+                    </item>
+                </item>
+            </argument>
+        </action>
+        <action name="approved">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="type" xsi:type="string">approved</item>
+                    <item name="label" xsi:type="string" translate="true">Approved</item>
+                    <item name="url" xsi:type="url" path="*/*/massapproved"/>
+                    <item name="confirm" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Approved</item>
+                        <item name="message" xsi:type="string" translate="true">Are you sure you want to update the status to approved?</item>
+                    </item>
+                </item>
+            </argument>
+        </action>
+        <action name="rejected">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="type" xsi:type="string">rejected</item>
+                    <item name="label" xsi:type="string" translate="true">Rejected</item>
+                    <item name="url" xsi:type="url" path="*/*/massrejected"/>
+                    <item name="confirm" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Rejected</item>
+                        <item name="message" xsi:type="string" translate="true">Are you sure you want to update the status to rejected?</item>
                     </item>
                 </item>
             </argument>
@@ -65,38 +91,51 @@
                 <label translate="true">Image</label>
             </settings>
         </column>
-        <column name="status">
+        <column name="return_id">
             <settings>
+                <sortable>true</sortable>
+                <filter>text</filter>
+                <label translate="true">Return Id</label>
+            </settings>
+        </column>
+        <column name="status" class="Vendor\ReturnRequest\Ui\Component\Listing\Columns\GetStatus">
+            <settings>
+                <sortable>true</sortable>
                 <filter>text</filter>
                 <label translate="true">Status</label>
             </settings>
         </column>
         <column name="order_id">
             <settings>
+                <sortable>true</sortable>
                 <filter>text</filter>
                 <label translate="true">Order Id</label>
             </settings>
         </column>
-        <column name="customer_id">
+        <column name="customer_id" class="Vendor\ReturnRequest\Ui\Component\Listing\Columns\GetCustomerEmail">
             <settings>
+                <sortable>true</sortable>
                 <filter>text</filter>
-                <label translate="true">Customer Id</label>
+                <label translate="true">Customer Email</label>
             </settings>
         </column>
-        <column name="reason">
+        <column name="reason" class="Vendor\ReturnRequest\Ui\Component\Listing\Columns\GetReason">
             <settings>
+                <sortable>true</sortable>
                 <filter>text</filter>
                 <label translate="true">Reason</label>
             </settings>
         </column>
         <column name="description">
             <settings>
+                <sortable>true</sortable>
                 <filter>text</filter>
                 <label translate="true">Description</label>
             </settings>
         </column>
         <column name="created_at">
             <settings>
+                <sortable>true</sortable>
                 <filter>text</filter>
                 <label translate="true">Created At</label>
             </settings>
