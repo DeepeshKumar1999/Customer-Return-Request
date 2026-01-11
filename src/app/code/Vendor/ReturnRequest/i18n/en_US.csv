@@ -1,0 +1,57 @@
+"Return Requests","Return Requests"
+"A total of %1 record(s) have been updated.","A total of %1 record(s) have been updated."
+"Invalid order.","Invalid order."
+"Order not found.","Order not found."
+"You are not allowed to request return for this order.","You are not allowed to request return for this order."
+"Request Return","Request Return"
+"My Returns","My Returns"
+"Return request submitted successfully.","Return request submitted successfully."
+"Invalid return request.","Invalid return request."
+"Return request not found.","Return request not found."
+"You are not authorized to view this return request.","You are not authorized to view this return request."
+"Return Request #%1","Return Request #%1"
+New,New
+Approved,Approved
+Rejected,Rejected
+"Reason Key","Reason Key"
+"Reason Label","Reason Label"
+"Add New Option","Add New Option"
+JPG,JPG
+JPEG,JPEG
+PNG,PNG
+GIF,GIF
+WEBP,WEBP
+"The data with the ""%1"" ID doesn't exist.","The data with the ""%1"" ID doesn't exist."
+Return,Return
+"View Return Request","View Return Request"
+"Return ID","Return ID"
+Image,Image
+"Order ID","Order ID"
+Reason,Reason
+Status,Status
+"Requested At","Requested At"
+Action,Action
+"Return Image","Return Image"
+N/A,N/A
+Pending,Pending
+View,View
+"You have not requested any returns yet.","You have not requested any returns yet."
+"Please select","Please select"
+Description,Description
+"Upload Image","Upload Image"
+"Submit Request","Submit Request"
+"Created At","Created At"
+Sales,Sales
+"Return Request","Return Request"
+"Return Requests General Settings","Return Requests General Settings"
+Enable,Enable
+"Enable Module","Enable Module"
+"Allowed Image Types","Allowed Image Types"
+"Select allowed image extensions","Select allowed image extensions"
+"Return Reasons","Return Reasons"
+"Are you sure you want to update the status to new?","Are you sure you want to update the status to new?"
+"Are you sure you want to update the status to approved?","Are you sure you want to update the status to approved?"
+"Are you sure you want to update the status to rejected?","Are you sure you want to update the status to rejected?"
+"Return Id","Return Id"
+"Order Id","Order Id"
+"Customer Email","Customer Email"

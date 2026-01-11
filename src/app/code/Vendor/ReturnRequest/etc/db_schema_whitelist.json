@@ -1,0 +1,31 @@
+{
+    "vendor_return_request": {
+        "column": {
+            "return_id": true,
+            "order_id": true,
+            "customer_id": true,
+            "reason": true,
+            "description": true,
+            "image": true,
+            "status": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "vendor_return_status_history": {
+        "column": {
+            "entity_id": true,
+            "return_id": true,
+            "old_status": true,
+            "new_status": true,
+            "changed_by": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_A2B3306BA86702E306026FF93B99552C": true
+        }
+    }
+}
