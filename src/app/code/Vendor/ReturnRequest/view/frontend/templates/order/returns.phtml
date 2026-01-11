@@ -1,0 +1,55 @@
+<?php /** @var \Vendor\ReturnRequest\Block\Order\Returns $block */ ?>
+<?php
+$returns = $block->getReturnRequests();
+$mediaUrl = $block->getMediaUrl();
+?>
+
+<?php if ($returns && $returns->getSize()): ?>
+    <table class="data table">
+        <thead>
+            <tr>
+                <th><?= $escaper->escapeHtml(__('Return ID')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Image')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Order ID')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Reason')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Status')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Requested At')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Action')) ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($returns as $return): ?>
+                <tr>
+                    <td><?= $escaper->escapeHtml($return->getReturnId()) ?></td>
+                    <td>
+                        <?php if ($return->getImage()): ?>
+                            <a href="<?= $escaper->escapeUrl($block->getMediaUrl() . $return->getImage()) ?>"
+                            target="_blank">
+                                <img src="<?= $escaper->escapeUrl($block->getMediaUrl() . $return->getImage()) ?>"
+                                    width="60"
+                                    alt="<?= $escaper->escapeHtml(__('Return Image')) ?>" />
+                            </a>
+                        <?php else: ?>
+                            <?= $escaper->escapeHtml(__('N/A')) ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <a href="<?= $escaper->escapeUrl($block->getOrderUrl($return->getOrderId())) ?>">
+                            <?= $escaper->escapeHtml($return->getOrderId()) ?>
+                        </a>
+                    </td>
+                    <td><?= $escaper->escapeHtml($return->getReason()) ?></td>
+                    <td><?= $escaper->escapeHtml($return->getStatus() ?? __("Pending")) ?></td>
+                    <td><?= $escaper->escapeHtml($return->getCreatedAt()) ?></td>
+                    <td>
+                        <a href="<?= $escaper->escapeUrl($block->getReturnRequestUrl($return->getReturnId())) ?>">
+                            <?= $escaper->escapeHtml(__("View")) ?>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p><?= $escaper->escapeHtml(__('You have not requested any returns yet.')) ?></p>
+<?php endif; ?>

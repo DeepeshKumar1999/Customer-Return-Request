@@ -1,0 +1,38 @@
+<form action="<?= $escaper->escapeUrl($block->getPostUrl()) ?>"
+      method="post"
+      enctype="multipart/form-data"
+      data-mage-init='{"validation":{}}'>
+    <?= $block->getBlockHtml('formkey'); ?>
+    <input type="hidden" name="order_id" value="<?= (int)$block->getOrderId() ?>" />
+    <fieldset class="fieldset">
+        <div class="field required">
+            <label class="label"><?= $escaper->escapeHtml(__('Reason')) ?></label>
+            <select name="reason" class="required-entry">
+                <option value=""><?= $escaper->escapeHtml(__('Please select')) ?></option>
+                <?php
+                $reasonList = $block->getReturnReasonList();
+                foreach ($reasonList as $key => $reason) {
+                    ?>
+                    <option value="<?= $escaper->escapeHtml($key) ?>">
+                        <?= $escaper->escapeHtml(__($reason)) ?>
+                    </option>
+                    <?php
+                }
+                ?>
+            </select>
+        </div>
+        <div class="field required">
+            <label class="label"><?= $escaper->escapeHtml(__('Description')) ?></label>
+            <textarea name="description" class="required-entry"></textarea>
+        </div>
+        <div class="field">
+            <label class="label"><?= $escaper->escapeHtml(__('Upload Image')) ?></label>
+            <input type="file" name="image" accept="<?= $escaper->escapeHtmlAttr($block->getAllowedImageTypes()) ?>"/>
+        </div>
+        <div class="actions">
+            <button type="submit" class="action primary">
+                <span><?= $escaper->escapeHtml(__('Submit Request')) ?></span>
+            </button>
+        </div>
+    </fieldset>
+</form>

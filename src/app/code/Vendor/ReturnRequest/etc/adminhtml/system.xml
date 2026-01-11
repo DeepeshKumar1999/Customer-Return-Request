@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="sales" translate="label" sortOrder="400">
+            <label>Sales</label>
+        </tab>
+        <section id="returnrequest" translate="label" sortOrder="900" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Return Requests</label>
+            <tab>sales</tab>
+            <resource>Vendor_ReturnRequest::config_returnrequest</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Return Requests General Settings</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <comment>Enable Module</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="allowed_image_types"
+                    translate="label comment"
+                    type="multiselect"
+                    sortOrder="20"
+                    showInDefault="1"
+                    showInWebsite="1"
+                    showInStore="1">
+                    <label>Allowed Image Types</label>
+                    <comment>Select allowed image extensions</comment>
+                    <source_model>Vendor\ReturnRequest\Model\Config\Source\ImageTypes</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="return_reasons" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Return Reasons</label>
+                    <frontend_model>Vendor\ReturnRequest\Model\Config\Frontend\ReturnReasons</frontend_model>
+                    <backend_model>Vendor\ReturnRequest\Model\Config\Backend\ReturnReasons</backend_model>
+                    <comment>Add return reasons which customer can select while creating the return request.</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

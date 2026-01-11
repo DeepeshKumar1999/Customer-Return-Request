@@ -1,0 +1,20 @@
+<?php
+
+/** @var \Vendor\ReturnRequest\Block\Order\ReturnColumn $block */ ?>
+
+<td class="col return" data-th="<?= $escaper->escapeHtml(__('Return')) ?>">
+    <?php if ($block->canRequestReturn()) {
+        $request = $block->isRequestExist();
+        if (!$request) { ?>
+            <a href="<?= $escaper->escapeUrl($block->getReturnUrl()) ?>">
+                <?= $escaper->escapeHtml(__('Request Return')) ?>
+            </a>
+        <?php } else { ?>
+            <a href="<?= $escaper->escapeUrl($block->getReturnRequestUrl($request)) ?>">
+                <?= $escaper->escapeHtml(__('View Return Request')) ?>
+            </a>
+        <?php }
+    } else { ?>
+        <span>-</span>
+    <?php } ?>
+</td>

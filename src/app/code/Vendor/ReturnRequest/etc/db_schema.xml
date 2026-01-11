@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="vendor_return_request" resource="default" engine="innodb" comment="Return Requests">
+        <column name="return_id" xsi:type="int" identity="true" unsigned="true" nullable="false"/>
+        <column name="order_id" xsi:type="int" nullable="false"/>
+        <column name="customer_id" xsi:type="int" nullable="false"/>
+        <column name="reason" xsi:type="varchar" length="100"/>
+        <column name="description" xsi:type="text"/>
+        <column name="image" xsi:type="varchar" length="255"/>
+        <column name="status" xsi:type="varchar" length="20" default="new"/>
+        <column name="created_at" xsi:type="timestamp" default="CURRENT_TIMESTAMP"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="return_id"/>
+        </constraint>
+    </table>
+    <table name="vendor_return_status_history" comment="Return Status History">
+        <column name="entity_id" xsi:type="int" identity="true" unsigned="true" nullable="false"/>
+        <column name="return_id" xsi:type="int" unsigned="true" nullable="false"/>
+        <column name="old_status" xsi:type="varchar" length="20"/>
+        <column name="new_status" xsi:type="varchar" length="20"/>
+        <column name="changed_by" xsi:type="int" nullable="true" comment="Admin User ID"/>
+        <column name="created_at" xsi:type="timestamp" nullable="false" default="CURRENT_TIMESTAMP"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+            referenceId="RETURN_STATUS_HISTORY_RETURN_ID"
+            table="vendor_return_status_history"
+            column="return_id"
+            referenceTable="vendor_return_request"
+            referenceColumn="return_id"
+            onDelete="CASCADE"/>
+    </table>
+</schema>

@@ -1,0 +1,43 @@
+<?php $return = $block->getReturnRequest(); ?>
+
+<table class="data table">
+    <tr>
+        <th><?= $escaper->escapeHtml(__('Order ID')) ?></th>
+        <td>
+            <a href="<?= $escaper->escapeUrl($block->getOrderUrl($return->getOrderId())) ?>">
+                <?= $escaper->escapeHtml($return->getOrderId()) ?>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th><?= $escaper->escapeHtml(__('Image')) ?></th>
+        <td>
+            <?php if ($return->getImage()): ?>
+                <a href="<?= $escaper->escapeUrl($block->getMediaUrl() . $return->getImage()) ?>"
+                target="_blank">
+                    <img src="<?= $escaper->escapeUrl($block->getMediaUrl() . $return->getImage()) ?>"
+                        width="60"
+                        alt="<?= $escaper->escapeHtml(__('Return Image')) ?>" />
+                </a>
+            <?php else: ?>
+                <?= $escaper->escapeHtml(__('N/A')) ?>
+            <?php endif; ?>
+        </td>
+    </tr>
+    <tr>
+        <th><?= $escaper->escapeHtml(__('Reason')) ?></th>
+        <td><?= $escaper->escapeHtml($return->getReason()) ?></td>
+    </tr>
+    <tr>
+        <th><?= $escaper->escapeHtml(__('Description')) ?></th>
+        <td><?= $escaper->escapeHtml($return->getDescription()) ?></td>
+    </tr>
+    <tr>
+        <th><?= $escaper->escapeHtml(__('Status')) ?></th>
+        <td><?= $escaper->escapeHtml(ucfirst($return->getStatus())) ?></td>
+    </tr>
+    <tr>
+        <th><?= $escaper->escapeHtml(__('Created At')) ?></th>
+        <td><?= $escaper->escapeHtml($return->getCreatedAt()) ?></td>
+    </tr>
+</table>
