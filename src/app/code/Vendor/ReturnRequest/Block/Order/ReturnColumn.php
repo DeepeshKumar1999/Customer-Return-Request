@@ -31,7 +31,7 @@ class ReturnColumn extends Template
      * Set current order from parent block
      *
      * @param Order $order
-     * @return $this
+     * @return \Vendor\ReturnRequest\Block\Order\ReturnColumn
      */
     public function setOrder(Order $order)
     {

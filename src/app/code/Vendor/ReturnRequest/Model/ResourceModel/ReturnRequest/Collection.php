@@ -28,7 +28,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     /**
      * Init Select
      *
-     * @return $this
+     * @return \Vendor\ReturnRequest\Model\ResourceModel\ReturnRequest\Collection
      */
     protected function _initSelect()
     {

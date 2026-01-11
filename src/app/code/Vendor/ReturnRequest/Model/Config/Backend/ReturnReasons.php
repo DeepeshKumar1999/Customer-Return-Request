@@ -40,7 +40,7 @@ class ReturnReasons extends ConfigValue
     /**
      * Prepare data before save
      *
-     * @return $this
+     * @return \Vendor\ReturnRequest\Model\Config\Backend\ReturnReasons
      */
     public function beforeSave()
     {
@@ -55,7 +55,7 @@ class ReturnReasons extends ConfigValue
     /**
      * Process data after load
      *
-     * @return $this
+     * @return \Vendor\ReturnRequest\Model\Config\Backend\ReturnReasons
      */
     protected function _afterLoad()
     {

@@ -14,7 +14,7 @@ interface ReturnRequestSearchResultInterface extends \Magento\Framework\Api\Sear
      * Set items.
      *
      * @param \Vendor\ReturnRequest\Api\Data\ReturnRequestInterface[] $items
-     * @return $this
+     * @return \Vendor\ReturnRequest\Api\Data\ReturnRequestSearchResultInterface
      */
     public function setItems(?array $items = null);
 }

@@ -14,7 +14,7 @@ interface ReturnStatusHistorySearchResultInterface extends \Magento\Framework\Ap
      * Set items.
      *
      * @param \Vendor\ReturnRequest\Api\Data\ReturnStatusHistoryInterface[] $items
-     * @return $this
+     * @return \Vendor\ReturnRequest\Api\Data\ReturnStatusHistorySearchResultInterface
      */
     public function setItems(?array $items = null);
 }

@@ -35,7 +35,7 @@ class ReturnStatusHistory extends AbstractModel implements IdentityInterface, Re
     /**
      * Load No-Route Indexer.
      *
-     * @return $this
+     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistory
      */
     public function noRouteReasons()
     {

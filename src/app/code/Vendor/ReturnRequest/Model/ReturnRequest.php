@@ -35,7 +35,7 @@ class ReturnRequest extends AbstractModel implements IdentityInterface, ReturnRe
     /**
      * Load No-Route Indexer.
      *
-     * @return $this
+     * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
     public function noRouteReasons()
     {
