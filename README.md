@@ -39,6 +39,9 @@ Screenshots or screencast of the module are available in the `Screenshots Screen
     php bin/magento module:enable Vendor_ReturnRequest
     php bin/magento setup:upgrade
     php bin/magento setup:di:compile
+    php bin/magento setup:static-content:deploy
+    php bin/magento indexer:reindex
+    php bin/magento cache:clean
     php bin/magento cache:flush
 - Log in to Admin Panel and verify the module is enabled.
 
