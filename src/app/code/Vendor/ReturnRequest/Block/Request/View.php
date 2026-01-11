@@ -1,9 +1,9 @@
 <?php
 namespace Vendor\ReturnRequest\Block\Request;
 
-use Magento\Framework\View\Element\Template;
+use \Magento\Framework\View\Element\Template;
 use Vendor\ReturnRequest\Api\ReturnRequestRepositoryInterface;
-use Magento\Store\Model\StoreManagerInterface;
+use \Magento\Store\Model\StoreManagerInterface;
 
 class View extends Template
 {
@@ -27,7 +27,7 @@ class View extends Template
     /**
      * Get Return Request
      *
-     * @return bool|int
+     * @return bool|\Vendor\ReturnRequest\Model\ReturnRequest
      */
     public function getReturnRequest()
     {
@@ -35,7 +35,7 @@ class View extends Template
         try {
             return $this->returnRequestRepositoryInterface->getById($returnId);
         } catch (\Exception $e) {
-            return false;
+            $returnId = 0;
         }
         return false;
     }
@@ -47,14 +47,17 @@ class View extends Template
      */
     public function getMediaUrl(): string
     {
-        return $this->storeManager
-            ->getStore()
-            ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+        /**
+         * @var \Magento\Store\Model\Store $store
+         */
+        $store = $this->storeManager->getStore();
+        return $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
     }
 
     /**
      * Get return Order URL
      *
+     * @param int $orderId
      * @return string
      */
     public function getOrderUrl($orderId)

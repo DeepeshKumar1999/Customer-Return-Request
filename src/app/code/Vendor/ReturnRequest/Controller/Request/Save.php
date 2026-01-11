@@ -1,13 +1,13 @@
 <?php
 namespace Vendor\ReturnRequest\Controller\Request;
 
-use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\Action\Context;
+use \Magento\Framework\App\Action\Action;
+use \Magento\Framework\App\Action\Context;
 use Vendor\ReturnRequest\Model\ReturnRequestFactory;
-use Magento\Customer\Model\Session;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Filesystem;
-use Magento\MediaStorage\Model\File\UploaderFactory;
+use \Magento\Customer\Model\Session;
+use \Magento\Framework\App\Filesystem\DirectoryList;
+use \Magento\Framework\Filesystem;
+use \Magento\MediaStorage\Model\File\UploaderFactory;
 use Vendor\ReturnRequest\Helper\Data;
 
 class Save extends Action
@@ -36,19 +36,23 @@ class Save extends Action
     /**
      * Execute
      *
-     * @return \Magento\Framework\View\Result\Page
+     * @return \Magento\Framework\View\Result\Page|\Magento\Framework\App\ResponseInterface
      */
     public function execute()
     {
         if (!$this->customerSession->isLoggedIn()) {
             return $this->_redirect('customer/account/login');
         }
-        $data = $this->getRequest()->getPostValue();
+        /**
+         * @var \Magento\Framework\App\Request\Http $request
+         */
+        $request = $this->getRequest();
+        $data = $request->getPostValue();
         if (!$data) {
             return $this->_redirect('sales/order/history');
         }
         try {
-            $file = $this->getRequest()->getFiles('image');
+            $file = $request->getFiles('image');
             $imageName = null;
             if ($file && !empty($file['name'])) {
                 $uploader = $this->uploaderFactory->create(['fileId' => 'image']);
@@ -76,8 +80,8 @@ class Save extends Action
             $this->messageManager->addSuccessMessage(__('Return request submitted successfully.'));
             return $this->_redirect('returnrequest/request/index');
         } catch (\Exception $e) {
-            $this->messageManager->addErrorMessage(__('Unable to submit return request.'));
-            return $this->_redirectReferer();
+            $this->messageManager->addErrorMessage(__($e->getMessage()));
+            return $this->_redirect('returnrequest/request/index');
         }
     }
 }

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Vendor\ReturnRequest\Helper;
 
-use Magento\Framework\App\Helper\AbstractHelper;
-use Magento\Store\Model\ScopeInterface;
+use \Magento\Framework\App\Helper\AbstractHelper;
+use \Magento\Store\Model\ScopeInterface;
 
 class Data extends AbstractHelper
 {
@@ -73,11 +73,6 @@ class Data extends AbstractHelper
     /**
      * Get Return Reason Status
      *
-     * Handles both:
-     * - multiselect (comma-separated string)
-     * - array (safe fallback)
-     *
-     * @param int|null $storeId
      * @return array
      */
     public function getReturnReasonStatus(): array
@@ -118,7 +113,6 @@ class Data extends AbstractHelper
 
     /**
      * Get accept attribute string for file input
-     * Example: ".jpg,.jpeg,.png"
      *
      * @param int|null $storeId
      * @return string
@@ -138,7 +132,7 @@ class Data extends AbstractHelper
      * Json Encode
      *
      * @param  array $arr
-     * @return array
+     * @return string
      */
     public function jsonEncode($arr = [])
     {

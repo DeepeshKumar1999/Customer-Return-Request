@@ -1,17 +1,27 @@
 <?php
 namespace Vendor\ReturnRequest\Model;
 
+use \Magento\Framework\Model\AbstractModel;
+use \Magento\Framework\DataObject\IdentityInterface;
+use \Vendor\ReturnRequest\Api\Data\ReturnStatusHistoryInterface;
+
 /**
  * ReturnStatusHistory Model Class
  */
-class ReturnStatusHistory extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface, \Vendor\ReturnRequest\Api\Data\ReturnStatusHistoryInterface
+class ReturnStatusHistory extends AbstractModel implements IdentityInterface, ReturnStatusHistoryInterface
 {
-    final public const NOROUTE_ENTITY_ID = 'no-route';
+    public const NOROUTE_ENTITY_ID = 'no-route';
 
-    final public const CACHE_TAG = 'vendor_returnrequest_returnstatushistory';
+    public const CACHE_TAG = 'vendor_returnrequest_returnstatushistory';
 
+    /**
+     * @var string
+     */
     protected $_cacheTag = 'vendor_returnrequest_returnstatushistory';
 
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'vendor_returnrequest_returnstatushistory';
 
     /**
@@ -29,13 +39,17 @@ class ReturnStatusHistory extends \Magento\Framework\Model\AbstractModel impleme
      */
     public function noRouteReasons()
     {
-        return $this->load(self::NOROUTE_ENTITY_ID, $this->getIdFieldName());
+        /**
+         * @var int $noRoute
+         */
+        $noRoute = self::NOROUTE_ENTITY_ID;
+        return $this->load($noRoute, $this->getIdFieldName());
     }
 
     /**
      * Get identities.
      *
-     * @return []
+     * @return array
      */
     public function getIdentities()
     {
@@ -46,7 +60,7 @@ class ReturnStatusHistory extends \Magento\Framework\Model\AbstractModel impleme
      * Set EntityId
      *
      * @param int $entityId
-     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistoryInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistory
      */
     public function setEntityId($entityId)
     {
@@ -67,7 +81,7 @@ class ReturnStatusHistory extends \Magento\Framework\Model\AbstractModel impleme
      * Set ReturnId
      *
      * @param int $returnId
-     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistoryInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistory
      */
     public function setReturnId($returnId)
     {
@@ -88,7 +102,7 @@ class ReturnStatusHistory extends \Magento\Framework\Model\AbstractModel impleme
      * Set Old Status
      *
      * @param string $oldStatus
-     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistoryInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistory
      */
     public function setOldStatus($oldStatus)
     {
@@ -109,7 +123,7 @@ class ReturnStatusHistory extends \Magento\Framework\Model\AbstractModel impleme
      * Set New Status
      *
      * @param string $newStatus
-     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistoryInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistory
      */
     public function setNewStatus($newStatus)
     {
@@ -130,7 +144,7 @@ class ReturnStatusHistory extends \Magento\Framework\Model\AbstractModel impleme
      * Set ChangedBy
      *
      * @param string $changedBy
-     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistoryInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistory
      */
     public function setChangedBy($changedBy)
     {
@@ -151,7 +165,7 @@ class ReturnStatusHistory extends \Magento\Framework\Model\AbstractModel impleme
      * Set CreatedAt
      *
      * @param string $createdAt
-     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistoryInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistory
      */
     public function setCreatedAt($createdAt)
     {
@@ -168,4 +182,3 @@ class ReturnStatusHistory extends \Magento\Framework\Model\AbstractModel impleme
         return parent::getData(self::CREATED_AT);
     }
 }
-

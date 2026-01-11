@@ -8,42 +8,42 @@ $mediaUrl = $block->getMediaUrl();
     <table class="data table">
         <thead>
             <tr>
-                <th><?= __('Return ID') ?></th>
-                <th><?= __('Image') ?></th>
-                <th><?= __('Order ID') ?></th>
-                <th><?= __('Reason') ?></th>
-                <th><?= __('Status') ?></th>
-                <th><?= __('Requested At') ?></th>
-                <th><?= __('Action') ?></th>
+                <th><?= $escaper->escapeHtml(__('Return ID')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Image')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Order ID')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Reason')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Status')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Requested At')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Action')) ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($returns as $return): ?>
                 <tr>
-                    <td><?= $return->getReturnId() ?></td>
+                    <td><?= $escaper->escapeHtml($return->getReturnId()) ?></td>
                     <td>
                         <?php if ($return->getImage()): ?>
-                            <a href="<?= $block->getMediaUrl() . $return->getImage() ?>"
+                            <a href="<?= $escaper->escapeUrl($block->getMediaUrl() . $return->getImage()) ?>"
                             target="_blank">
-                                <img src="<?= $block->getMediaUrl() . $return->getImage() ?>"
+                                <img src="<?= $escaper->escapeUrl($block->getMediaUrl() . $return->getImage()) ?>"
                                     width="60"
-                                    alt="<?= __('Return Image') ?>" />
+                                    alt="<?= $escaper->escapeHtml(__('Return Image')) ?>" />
                             </a>
                         <?php else: ?>
-                            <?= __('N/A') ?>
+                            <?= $escaper->escapeHtml(__('N/A')) ?>
                         <?php endif; ?>
                     </td>
                     <td>
-                        <a href="<?= $block->getOrderUrl($return->getOrderId()) ?>">
-                            <?= $block->escapeHtml($return->getOrderId()) ?>
+                        <a href="<?= $escaper->escapeUrl($block->getOrderUrl($return->getOrderId())) ?>">
+                            <?= $escaper->escapeHtml($return->getOrderId()) ?>
                         </a>
                     </td>
-                    <td><?= $block->escapeHtml($return->getReason()) ?></td>
-                    <td><?= $block->escapeHtml($return->getStatus() ?? __("Pending")) ?></td>
-                    <td><?= $block->escapeHtml($return->getCreatedAt()) ?></td>
+                    <td><?= $escaper->escapeHtml($return->getReason()) ?></td>
+                    <td><?= $escaper->escapeHtml($return->getStatus() ?? __("Pending")) ?></td>
+                    <td><?= $escaper->escapeHtml($return->getCreatedAt()) ?></td>
                     <td>
-                        <a href="<?= $block->getReturnRequestUrl($return->getReturnId()) ?>">
-                            <?= $block->escapeHtml(__("View")) ?>
+                        <a href="<?= $escaper->escapeUrl($block->getReturnRequestUrl($return->getReturnId())) ?>">
+                            <?= $escaper->escapeHtml(__("View")) ?>
                         </a>
                     </td>
                 </tr>
@@ -51,5 +51,5 @@ $mediaUrl = $block->getMediaUrl();
         </tbody>
     </table>
 <?php else: ?>
-    <p><?= __('You have not requested any returns yet.') ?></p>
+    <p><?= $escaper->escapeHtml(__('You have not requested any returns yet.')) ?></p>
 <?php endif; ?>

@@ -6,7 +6,7 @@ use Vendor\ReturnRequest\Model\ResourceModel\ReturnRequest\CollectionFactory;
 class Listing extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
     /**
-     * @var Vendor\ReturnRequest\Model\ResourceModel\ReturnRequest\Collection
+     * @var \Vendor\ReturnRequest\Model\ResourceModel\ReturnRequest\Collection
      */
     protected $collection;
 

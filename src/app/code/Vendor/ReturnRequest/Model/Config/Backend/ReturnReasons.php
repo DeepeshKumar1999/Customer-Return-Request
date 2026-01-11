@@ -1,13 +1,13 @@
 <?php
 namespace Vendor\ReturnRequest\Model\Config\Backend;
  
-use Magento\Framework\App\Cache\TypeListInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\App\Config\Value as ConfigValue;
-use Magento\Framework\Data\Collection\AbstractDb;
-use Magento\Framework\Model\Context;
-use Magento\Framework\Model\ResourceModel\AbstractResource;
-use Magento\Framework\Registry;
+use \Magento\Framework\App\Cache\TypeListInterface;
+use \Magento\Framework\App\Config\ScopeConfigInterface;
+use \Magento\Framework\App\Config\Value as ConfigValue;
+use \Magento\Framework\Data\Collection\AbstractDb;
+use \Magento\Framework\Model\Context;
+use \Magento\Framework\Model\ResourceModel\AbstractResource;
+use \Magento\Framework\Registry;
 use Vendor\ReturnRequest\Helper\Data;
  
 class ReturnReasons extends ConfigValue
@@ -40,7 +40,7 @@ class ReturnReasons extends ConfigValue
     /**
      * Prepare data before save
      *
-     * @return void
+     * @return $this
      */
     public function beforeSave()
     {
@@ -49,20 +49,23 @@ class ReturnReasons extends ConfigValue
         unset($value['__empty']);
         $encodedValue = $this->helperData->jsonEncode($value);
         $this->setValue($encodedValue);
+        return $this;
     }
 
     /**
      * Process data after load
      *
-     * @return void
+     * @return $this
      */
     protected function _afterLoad()
     {
         /** @var string $value */
         $value = $this->getValue();
         if (!empty($value)) {
+            /** @var string $decodedValue */
             $decodedValue = $this->helperData->jsonDecode($value);
             $this->setValue($decodedValue);
         }
+        return $this;
     }
 }

@@ -2,42 +2,42 @@
 
 <table class="data table">
     <tr>
-        <th><?= __('Order ID') ?></th>
+        <th><?= $escaper->escapeHtml(__('Order ID')) ?></th>
         <td>
-            <a href="<?= $block->getOrderUrl($return->getOrderId()) ?>">
-                <?= $block->escapeHtml($return->getOrderId()) ?>
+            <a href="<?= $escaper->escapeUrl($block->getOrderUrl($return->getOrderId())) ?>">
+                <?= $escaper->escapeHtml($return->getOrderId()) ?>
             </a>
         </td>
     </tr>
     <tr>
-        <th><?= __('Image') ?></th>
+        <th><?= $escaper->escapeHtml(__('Image')) ?></th>
         <td>
             <?php if ($return->getImage()): ?>
-                <a href="<?= $block->getMediaUrl() . $return->getImage() ?>"
+                <a href="<?= $escaper->escapeUrl($block->getMediaUrl() . $return->getImage()) ?>"
                 target="_blank">
-                    <img src="<?= $block->getMediaUrl() . $return->getImage() ?>"
+                    <img src="<?= $escaper->escapeUrl($block->getMediaUrl() . $return->getImage()) ?>"
                         width="60"
-                        alt="<?= __('Return Image') ?>" />
+                        alt="<?= $escaper->escapeHtml(__('Return Image')) ?>" />
                 </a>
             <?php else: ?>
-                <?= __('N/A') ?>
+                <?= $escaper->escapeHtml(__('N/A')) ?>
             <?php endif; ?>
         </td>
     </tr>
     <tr>
-        <th><?= __('Reason') ?></th>
-        <td><?= $return->getReason() ?></td>
+        <th><?= $escaper->escapeHtml(__('Reason')) ?></th>
+        <td><?= $escaper->escapeHtml($return->getReason()) ?></td>
     </tr>
     <tr>
-        <th><?= __('Description') ?></th>
-        <td><?= $return->getDescription() ?></td>
+        <th><?= $escaper->escapeHtml(__('Description')) ?></th>
+        <td><?= $escaper->escapeHtml($return->getDescription()) ?></td>
     </tr>
     <tr>
-        <th><?= __('Status') ?></th>
-        <td><?= ucfirst($return->getStatus()) ?></td>
+        <th><?= $escaper->escapeHtml(__('Status')) ?></th>
+        <td><?= $escaper->escapeHtml(ucfirst($return->getStatus())) ?></td>
     </tr>
     <tr>
-        <th><?= __('Created At') ?></th>
-        <td><?= $return->getCreatedAt() ?></td>
+        <th><?= $escaper->escapeHtml(__('Created At')) ?></th>
+        <td><?= $escaper->escapeHtml($return->getCreatedAt()) ?></td>
     </tr>
 </table>

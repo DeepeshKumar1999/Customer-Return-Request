@@ -6,6 +6,9 @@ namespace Vendor\ReturnRequest\Model\ResourceModel\ReturnRequest;
  */
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
+    /**
+     * @var string
+     */
     protected $_idFieldName = 'return_id';
 
     /**
@@ -39,4 +42,3 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         return $this;
     }
 }
-

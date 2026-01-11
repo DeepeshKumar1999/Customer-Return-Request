@@ -1,10 +1,10 @@
 <?php
 namespace Vendor\ReturnRequest\Controller\Request;
 
-use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\Action\Context;
-use Magento\Framework\View\Result\PageFactory;
-use Magento\Customer\Model\Session;
+use \Magento\Framework\App\Action\Action;
+use \Magento\Framework\App\Action\Context;
+use \Magento\Framework\View\Result\PageFactory;
+use \Magento\Customer\Model\Session;
 use Vendor\ReturnRequest\Api\ReturnRequestRepositoryInterface;
 
 class View extends Action
@@ -29,7 +29,7 @@ class View extends Action
     /**
      * Execute
      *
-     * @return \Magento\Framework\View\Result\Page
+     * @return \Magento\Framework\View\Result\Page|\Magento\Framework\App\ResponseInterface
      */
     public function execute()
     {

@@ -1,7 +1,7 @@
 <?php
 namespace Vendor\ReturnRequest\Model\Config\Source;
 
-use Magento\Framework\Data\OptionSourceInterface;
+use \Magento\Framework\Data\OptionSourceInterface;
 
 class ImageTypes implements OptionSourceInterface
 {

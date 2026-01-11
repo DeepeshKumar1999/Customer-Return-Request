@@ -2,7 +2,7 @@
 namespace Vendor\ReturnRequest\Plugin;
 
 use Vendor\ReturnRequest\Model\ReturnStatusHistoryFactory;
-use Magento\Backend\Model\Auth\Session as AdminSession;
+use \Magento\Backend\Model\Auth\Session as AdminSession;
 
 class ReturnStatusHistoryPlugin
 {
@@ -19,11 +19,11 @@ class ReturnStatusHistoryPlugin
     }
 
     /**
-     * afterSave plugin
+     * After Save plugin
      *
      * @param \Vendor\ReturnRequest\Model\ReturnRequest $subject
      * @param \Vendor\ReturnRequest\Model\ReturnRequest $result
-     * @return Vendor\ReturnRequest\Model\ReturnRequest
+     * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
     public function afterSave(
         $subject,

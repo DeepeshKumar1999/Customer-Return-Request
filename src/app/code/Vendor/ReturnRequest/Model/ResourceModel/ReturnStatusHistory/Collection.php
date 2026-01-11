@@ -6,6 +6,9 @@ namespace Vendor\ReturnRequest\Model\ResourceModel\ReturnStatusHistory;
  */
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
+    /**
+     * @var string
+     */
     protected $_idFieldName = 'entity_id';
 
     /**
@@ -22,4 +25,3 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         $this->_map['fields']['entity_id'] = 'main_table.entity_id';
     }
 }
-

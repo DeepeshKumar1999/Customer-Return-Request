@@ -2,8 +2,8 @@
 namespace Vendor\ReturnRequest\Block\Order;
 
 use Vendor\ReturnRequest\Model\ResourceModel\ReturnRequest\CollectionFactory as ReturnCollectionFactory;
-use Magento\Framework\View\Element\Template;
-use Magento\Sales\Model\Order;
+use \Magento\Framework\View\Element\Template;
+use \Magento\Sales\Model\Order;
 
 class ReturnColumn extends Template
 {
@@ -12,6 +12,13 @@ class ReturnColumn extends Template
      */
     protected $order = null;
 
+    /**
+     * Dependency Initilization
+     *
+     * @param Template\Context $context
+     * @param ReturnCollectionFactory $collectionFactory
+     * @param array $data
+     */
     public function __construct(
         Template\Context $context,
         protected ReturnCollectionFactory $collectionFactory,
@@ -63,7 +70,7 @@ class ReturnColumn extends Template
      *
      * @return bool|int
      */
-    public function IsRequestExist()
+    public function isRequestExist()
     {
         if (!$this->order) {
             return false;
@@ -77,12 +84,17 @@ class ReturnColumn extends Template
         if (!$collection->getSize()) {
             return false;
         }
-        return $collection->getLastItem()->getReturnId();
+        /**
+         * @var \Vendor\ReturnRequest\Model\ReturnRequest $lastItem
+         */
+        $lastItem = $collection->getLastItem();
+        return $lastItem->getReturnId();
     }
 
     /**
      * Get return request URL
      *
+     * @param int $returnId
      * @return string
      */
     public function getReturnRequestUrl($returnId)

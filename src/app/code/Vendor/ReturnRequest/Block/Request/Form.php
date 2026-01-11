@@ -1,8 +1,8 @@
 <?php
 namespace Vendor\ReturnRequest\Block\Request;
 
-use Magento\Framework\View\Element\Template;
-use Magento\Customer\Model\Session;
+use \Magento\Framework\View\Element\Template;
+use \Magento\Customer\Model\Session;
 use \Vendor\ReturnRequest\Helper\Data as HelperData;
 
 class Form extends Template

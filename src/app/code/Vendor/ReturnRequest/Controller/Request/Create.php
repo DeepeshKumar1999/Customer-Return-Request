@@ -1,11 +1,11 @@
 <?php
 namespace Vendor\ReturnRequest\Controller\Request;
 
-use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\Action\Context;
-use Magento\Framework\View\Result\PageFactory;
-use Magento\Customer\Model\Session;
-use Magento\Sales\Api\OrderRepositoryInterface;
+use \Magento\Framework\App\Action\Action;
+use \Magento\Framework\App\Action\Context;
+use \Magento\Framework\View\Result\PageFactory;
+use \Magento\Customer\Model\Session;
+use \Magento\Sales\Api\OrderRepositoryInterface;
 
 class Create extends Action
 {
@@ -29,7 +29,7 @@ class Create extends Action
     /**
      * Execute
      *
-     * @return \Magento\Framework\View\Result\Page
+     * @return \Magento\Framework\View\Result\Page|\Magento\Framework\App\ResponseInterface
      */
     public function execute()
     {

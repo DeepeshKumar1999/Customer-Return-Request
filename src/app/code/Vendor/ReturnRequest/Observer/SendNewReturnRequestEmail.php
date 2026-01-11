@@ -1,14 +1,14 @@
 <?php
 namespace Vendor\ReturnRequest\Observer;
 
-use Magento\Framework\Event\Observer;
-use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\Mail\Template\TransportBuilder;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\App\Area;
-use Magento\Framework\Translate\Inline\StateInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Store\Model\ScopeInterface;
+use \Magento\Framework\Event\Observer;
+use \Magento\Framework\Event\ObserverInterface;
+use \Magento\Framework\Mail\Template\TransportBuilder;
+use \Magento\Store\Model\StoreManagerInterface;
+use \Magento\Framework\App\Area;
+use \Magento\Framework\Translate\Inline\StateInterface;
+use \Magento\Framework\App\Config\ScopeConfigInterface;
+use \Magento\Store\Model\ScopeInterface;
 
 class SendNewReturnRequestEmail implements ObserverInterface
 {
@@ -25,7 +25,8 @@ class SendNewReturnRequestEmail implements ObserverInterface
         protected StoreManagerInterface $storeManager,
         protected StateInterface $inlineTranslation,
         protected ScopeConfigInterface $scopeConfig
-    ) {}
+    ) {
+    }
 
     /**
      * Execute
@@ -79,7 +80,7 @@ class SendNewReturnRequestEmail implements ObserverInterface
                 $transport->sendMessage();
             }
         } catch (\Exception $e) {
-            // log if needed
+            $storeId = $this->storeManager->getStore()->getId();
         } finally {
             $this->inlineTranslation->resume();
         }

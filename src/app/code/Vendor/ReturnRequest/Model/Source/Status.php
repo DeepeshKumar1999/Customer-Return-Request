@@ -1,10 +1,15 @@
 <?php
 namespace Vendor\ReturnRequest\Model\Source;
 
-use Magento\Framework\Data\OptionSourceInterface;
+use \Magento\Framework\Data\OptionSourceInterface;
 
 class Status implements OptionSourceInterface
 {
+    /**
+     * To option array
+     *
+     * @return array
+     */
     public function toOptionArray()
     {
         return [

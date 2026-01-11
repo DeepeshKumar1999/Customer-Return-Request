@@ -1,8 +1,8 @@
 <?php
 namespace Vendor\ReturnRequest\Ui\Component\Listing\Columns;
 
-use Magento\Framework\UrlInterface;
-use Magento\Ui\Component\Listing\Columns\Column;
+use \Magento\Framework\UrlInterface;
+use \Magento\Ui\Component\Listing\Columns\Column;
 
 class OrderLink extends Column
 {

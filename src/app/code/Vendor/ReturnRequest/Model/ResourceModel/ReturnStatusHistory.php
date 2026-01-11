@@ -16,4 +16,3 @@ class ReturnStatusHistory extends \Magento\Framework\Model\ResourceModel\Db\Abst
         $this->_init("vendor_return_status_history", "entity_id");
     }
 }
-

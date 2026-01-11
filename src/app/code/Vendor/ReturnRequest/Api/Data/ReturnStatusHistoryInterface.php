@@ -97,4 +97,3 @@ interface ReturnStatusHistoryInterface
      */
     public function getCreatedAt();
 }
-

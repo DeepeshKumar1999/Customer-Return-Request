@@ -1,10 +1,10 @@
 <?php
 namespace Vendor\ReturnRequest\Block\Order;
 
-use Magento\Framework\View\Element\Template;
+use \Magento\Framework\View\Element\Template;
 use Vendor\ReturnRequest\Model\ResourceModel\ReturnRequest\CollectionFactory as ReturnCollectionFactory;
-use Magento\Customer\Model\Session;
-use Magento\Store\Model\StoreManagerInterface;
+use \Magento\Customer\Model\Session;
+use \Magento\Store\Model\StoreManagerInterface;
 
 class Returns extends Template
 {
@@ -30,20 +30,21 @@ class Returns extends Template
     /**
      * Get return requests for current customer
      *
-     * @return \Vendor\ReturnRequest\Model\ResourceModel\Request\Collection
+     * @return \Vendor\ReturnRequest\Model\ResourceModel\ReturnRequest\Collection
      */
     public function getReturnRequests()
     {
         $customerId = $this->customerSession->getCustomerId();
 
         return $this->collectionFactory->create()
-            ->addFieldToFilter('customer_id', $customerId)
+            ->addFieldToFilter('customer_id', ['eq' => $customerId])
             ->setOrder('created_at', 'DESC');
     }
 
     /**
      * Get return Order URL
      *
+     * @param int $orderId
      * @return string
      */
     public function getOrderUrl($orderId)
@@ -60,6 +61,7 @@ class Returns extends Template
     /**
      * Get return request URL
      *
+     * @param int $returnId
      * @return string
      */
     public function getReturnRequestUrl($returnId)
@@ -80,8 +82,10 @@ class Returns extends Template
      */
     public function getMediaUrl(): string
     {
-        return $this->storeManager
-            ->getStore()
-            ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+        /**
+         * @var \Magento\Store\Model\Store $store
+         */
+        $store = $this->storeManager->getStore();
+        return $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
     }
 }

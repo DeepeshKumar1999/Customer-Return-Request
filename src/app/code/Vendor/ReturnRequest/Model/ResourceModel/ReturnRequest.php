@@ -16,4 +16,3 @@ class ReturnRequest extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $this->_init("vendor_return_request", "return_id");
     }
 }
-

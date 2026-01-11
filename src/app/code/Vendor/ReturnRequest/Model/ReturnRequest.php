@@ -1,17 +1,27 @@
 <?php
 namespace Vendor\ReturnRequest\Model;
 
+use \Magento\Framework\Model\AbstractModel;
+use \Magento\Framework\DataObject\IdentityInterface;
+use \Vendor\ReturnRequest\Api\Data\ReturnRequestInterface;
+
 /**
  * ReturnRequest Model Class
  */
-class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface, \Vendor\ReturnRequest\Api\Data\ReturnRequestInterface
+class ReturnRequest extends AbstractModel implements IdentityInterface, ReturnRequestInterface
 {
-    final public const NOROUTE_ENTITY_ID = 'no-route';
+    public const NOROUTE_ENTITY_ID = 'no-route';
 
-    final public const CACHE_TAG = 'vendor_returnrequest_returnrequest';
+    public const CACHE_TAG = 'vendor_returnrequest_returnrequest';
 
+    /**
+     * @var string
+     */
     protected $_cacheTag = 'vendor_returnrequest_returnrequest';
 
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'vendor_returnrequest_returnrequest';
 
     /**
@@ -29,13 +39,17 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
      */
     public function noRouteReasons()
     {
-        return $this->load(self::NOROUTE_ENTITY_ID, $this->getIdFieldName());
+        /**
+         * @var int $noRoute
+         */
+        $noRoute = self::NOROUTE_ENTITY_ID;
+        return $this->load($noRoute, $this->getIdFieldName());
     }
 
     /**
      * Get identities.
      *
-     * @return []
+     * @return array
      */
     public function getIdentities()
     {
@@ -46,7 +60,7 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
      * Set ReturnId
      *
      * @param int $returnId
-     * @return \Vendor\ReturnRequest\Model\ReturnRequestInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
     public function setReturnId($returnId)
     {
@@ -67,7 +81,7 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
      * Set OrderId
      *
      * @param int $orderId
-     * @return \Vendor\ReturnRequest\Model\ReturnRequestInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
     public function setOrderId($orderId)
     {
@@ -88,7 +102,7 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
      * Set CustomerId
      *
      * @param int $customerId
-     * @return \Vendor\ReturnRequest\Model\ReturnRequestInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
     public function setCustomerId($customerId)
     {
@@ -109,7 +123,7 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
      * Set Reason
      *
      * @param string $reason
-     * @return \Vendor\ReturnRequest\Model\ReturnRequestInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
     public function setReason($reason)
     {
@@ -130,7 +144,7 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
      * Set Description
      *
      * @param string $description
-     * @return \Vendor\ReturnRequest\Model\ReturnRequestInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
     public function setDescription($description)
     {
@@ -151,7 +165,7 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
      * Set Image
      *
      * @param string $image
-     * @return \Vendor\ReturnRequest\Model\ReturnRequestInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
     public function setImage($image)
     {
@@ -172,7 +186,7 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
      * Set Status
      *
      * @param string $status
-     * @return \Vendor\ReturnRequest\Model\ReturnRequestInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
     public function setStatus($status)
     {
@@ -193,7 +207,7 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
      * Set CreatedAt
      *
      * @param string $createdAt
-     * @return \Vendor\ReturnRequest\Model\ReturnRequestInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
     public function setCreatedAt($createdAt)
     {
@@ -213,7 +227,7 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
     /**
      * After Save
      *
-     * @return \Vendor\ReturnRequest\Model\ReturnRequestInterface
+     * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
     protected function _afterSave()
     {
@@ -227,4 +241,3 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
         return $this;
     }
 }
-

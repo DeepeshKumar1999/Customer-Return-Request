@@ -61,8 +61,8 @@ class ReturnStatusHistoryRepository implements \Vendor\ReturnRequest\Api\ReturnS
     /**
      * Get list
      *
-     * @param Magento\Framework\Api\SearchCriteriaInterface $creteria
-     * @return Magento\Framework\Api\SearchResults
+     * @param \Magento\Framework\Api\SearchCriteriaInterface $creteria
+     * @return \Vendor\ReturnRequest\Api\Data\ReturnStatusHistorySearchResultInterface
      */
     public function getList(\Magento\Framework\Api\SearchCriteriaInterface $creteria)
     {
@@ -71,7 +71,11 @@ class ReturnStatusHistoryRepository implements \Vendor\ReturnRequest\Api\ReturnS
         $collection->load();
         $searchResult = $this->returnStatusHistorySearchResultInterfaceFactory->create();
         $searchResult->setSearchCriteria($creteria);
-        $searchResult->setItems($collection->getItems());
+        /**
+         * @var \Vendor\ReturnRequest\Api\Data\ReturnStatusHistoryInterface[]|null $items
+         */
+        $items = $collection->getItems();
+        $searchResult->setItems($items);
         $searchResult->setTotalCount($collection->getSize());
         return $searchResult;
     }
@@ -103,4 +107,3 @@ class ReturnStatusHistoryRepository implements \Vendor\ReturnRequest\Api\ReturnS
         return $this->delete($this->getById($id));
     }
 }
-

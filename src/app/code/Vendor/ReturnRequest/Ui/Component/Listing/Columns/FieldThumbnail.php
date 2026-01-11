@@ -2,12 +2,12 @@
 
 namespace Vendor\ReturnRequest\Ui\Component\Listing\Columns;
 
-use Magento\Catalog\Helper\Image;
-use Magento\Framework\UrlInterface;
-use Magento\Framework\View\Element\UiComponentFactory;
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Ui\Component\Listing\Columns\Column;
+use \Magento\Catalog\Helper\Image;
+use \Magento\Framework\UrlInterface;
+use \Magento\Framework\View\Element\UiComponentFactory;
+use \Magento\Framework\View\Element\UiComponent\ContextInterface;
+use \Magento\Store\Model\StoreManagerInterface;
+use \Magento\Ui\Component\Listing\Columns\Column;
 use \Magento\Catalog\Model\View\Asset\PlaceholderFactory;
 
 class FieldThumbnail extends Column
@@ -15,10 +15,10 @@ class FieldThumbnail extends Column
     /**
      * Dependency Initilization
      *
-     * @param PlaceholderFactory $placeholder
-     * @param UiComponentFactory $uiComponentFactory
-     * @param StoreManagerInterface $storeManager
      * @param ContextInterface $context
+     * @param UiComponentFactory $uiComponentFactory
+     * @param PlaceholderFactory $placeholder
+     * @param StoreManagerInterface $storeManager
      * @param UrlInterface $urlBuilder
      * @param Image $imageHelper
      * @param array $components
@@ -51,7 +51,11 @@ class FieldThumbnail extends Column
             foreach ($dataSource['data']['items'] as &$item) {
                 $url = '';
                 if ($item[$fieldName] != '') {
-                    $url = $this->storeManager->getStore()->getBaseUrl(
+                    /**
+                     * @var \Magento\Store\Model\Store
+                     */
+                    $store = $this->storeManager->getStore();
+                    $url = $store->getBaseUrl(
                         UrlInterface::URL_TYPE_MEDIA
                     ) . $item[$fieldName];
                 } else {

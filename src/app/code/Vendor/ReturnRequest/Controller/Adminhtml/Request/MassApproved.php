@@ -28,9 +28,9 @@ class MassApproved extends \Magento\Backend\App\Action
     }
 
     /**
-     * Execute the action
+     * Execute
      *
-     * @return void
+     * @return \Magento\Framework\Controller\Result\Redirect
      */
     public function execute()
     {
