@@ -6,7 +6,7 @@ The Customer Return Request module allows customers to create return requests fo
 This module is useful for stores that want a simple, custom return (RMA-like) workflow without using Magento Commerce RMA features.
 
 ## Refrence Screenshots
-Screenshots of the module are available in the `Screenshots` directory.
+Screenshots or screencast of the module are available in the `Screenshots Screencast` directory.
 
 ## Features
 ### Frontend (Customer)
