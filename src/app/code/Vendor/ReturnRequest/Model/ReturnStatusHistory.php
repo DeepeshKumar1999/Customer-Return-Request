@@ -85,45 +85,87 @@ class ReturnStatusHistory extends \Magento\Framework\Model\AbstractModel impleme
     }
 
     /**
-     * Set Status
+     * Set Old Status
      *
-     * @param string $status
+     * @param string $oldStatus
      * @return \Vendor\ReturnRequest\Model\ReturnStatusHistoryInterface
      */
-    public function setStatus($status)
+    public function setOldStatus($oldStatus)
     {
-        return $this->setData(self::STATUS, $status);
+        return $this->setData(self::OLD_STATUS, $oldStatus);
     }
 
     /**
-     * Get Status
+     * Get Old Status
      *
      * @return string
      */
-    public function getStatus()
+    public function getOldStatus()
     {
-        return parent::getData(self::STATUS);
+        return parent::getData(self::OLD_STATUS);
     }
 
     /**
-     * Set ChangedAt
+     * Set New Status
      *
-     * @param string $changedAt
+     * @param string $newStatus
      * @return \Vendor\ReturnRequest\Model\ReturnStatusHistoryInterface
      */
-    public function setChangedAt($changedAt)
+    public function setNewStatus($newStatus)
     {
-        return $this->setData(self::CHANGED_AT, $changedAt);
+        return $this->setData(self::NEW_STATUS, $newStatus);
     }
 
     /**
-     * Get ChangedAt
+     * Get New Status
      *
      * @return string
      */
-    public function getChangedAt()
+    public function getNewStatus()
     {
-        return parent::getData(self::CHANGED_AT);
+        return parent::getData(self::NEW_STATUS);
+    }
+
+    /**
+     * Set ChangedBy
+     *
+     * @param string $changedBy
+     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistoryInterface
+     */
+    public function setChangedBy($changedBy)
+    {
+        return $this->setData(self::CHANGED_BY, $changedBy);
+    }
+
+    /**
+     * Get ChangedBy
+     *
+     * @return string
+     */
+    public function getChangedBy()
+    {
+        return parent::getData(self::CHANGED_BY);
+    }
+
+    /**
+     * Set CreatedAt
+     *
+     * @param string $createdAt
+     * @return \Vendor\ReturnRequest\Model\ReturnStatusHistoryInterface
+     */
+    public function setCreatedAt($createdAt)
+    {
+        return $this->setData(self::CREATED_AT, $createdAt);
+    }
+
+    /**
+     * Get CreatedAt
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return parent::getData(self::CREATED_AT);
     }
 }
 

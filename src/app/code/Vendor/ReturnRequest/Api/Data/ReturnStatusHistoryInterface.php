@@ -10,9 +10,13 @@ interface ReturnStatusHistoryInterface
 
     public const RETURN_ID = 'return_id';
 
-    public const STATUS = 'status';
+    public const OLD_STATUS = 'old_status';
 
-    public const CHANGED_AT = 'changed_at';
+    public const NEW_STATUS = 'new_status';
+
+    public const CHANGED_BY = 'changed_by';
+
+    public const CREATED_AT = 'created_at';
 
     /**
      * Set EntityId
@@ -41,30 +45,56 @@ interface ReturnStatusHistoryInterface
      */
     public function getReturnId();
     /**
-     * Set Status
+     * Set Old Status
      *
-     * @param string $status
+     * @param string $oldStatus
      * @return \Vendor\ReturnRequest\Api\Data\ReturnStatusHistoryInterface
      */
-    public function setStatus($status);
+    public function setOldStatus($oldStatus);
     /**
-     * Get Status
+     * Get Old Status
      *
      * @return string
      */
-    public function getStatus();
+    public function getOldStatus();
     /**
-     * Set ChangedAt
+     * Set New Status
      *
-     * @param string $changedAt
+     * @param string $newStatus
      * @return \Vendor\ReturnRequest\Api\Data\ReturnStatusHistoryInterface
      */
-    public function setChangedAt($changedAt);
+    public function setNewStatus($newStatus);
     /**
-     * Get ChangedAt
+     * Get New Status
      *
      * @return string
      */
-    public function getChangedAt();
+    public function getNewStatus();
+    /**
+     * Set ChangedBy
+     *
+     * @param string $changedBy
+     * @return \Vendor\ReturnRequest\Api\Data\ReturnStatusHistoryInterface
+     */
+    public function setChangedBy($changedBy);
+    /**
+     * Get ChangedBy
+     *
+     * @return string
+     */
+    public function getChangedBy();
+    /**
+     * Set CreatedAt
+     *
+     * @param string $createdAt
+     * @return \Vendor\ReturnRequest\Api\Data\ReturnStatusHistoryInterface
+     */
+    public function setCreatedAt($createdAt);
+    /**
+     * Get CreatedAt
+     *
+     * @return string
+     */
+    public function getCreatedAt();
 }
 

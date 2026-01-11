@@ -7,4 +7,10 @@
   <preference for="Vendor\ReturnRequest\Api\Data\ReturnStatusHistorySearchResultInterface" type="Magento\Framework\Api\SearchResults"/>
   <preference for="Vendor\ReturnRequest\Api\ReturnStatusHistoryInterface" type="Vendor\ReturnRequest\Model\ReturnStatusHistory"/>
   <preference for="Vendor\ReturnRequest\Api\ReturnStatusHistoryRepositoryInterface" type="Vendor\ReturnRequest\Model\ReturnStatusHistoryRepository"/>
+
+  <type name="Vendor\ReturnRequest\Model\ReturnRequest">
+      <plugin
+          name="return_status_history_plugin"
+          type="Vendor\ReturnRequest\Plugin\ReturnStatusHistoryPlugin"/>
+  </type>
 </config>

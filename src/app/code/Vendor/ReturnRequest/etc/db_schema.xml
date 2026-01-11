@@ -15,11 +15,20 @@
     </table>
     <table name="vendor_return_status_history" comment="Return Status History">
         <column name="entity_id" xsi:type="int" identity="true" unsigned="true" nullable="false"/>
-        <column name="return_id" xsi:type="int"/>
-        <column name="status" xsi:type="varchar" length="20"/>
-        <column name="changed_at" xsi:type="timestamp" default="CURRENT_TIMESTAMP"/>
+        <column name="return_id" xsi:type="int" unsigned="true" nullable="false"/>
+        <column name="old_status" xsi:type="varchar" length="20"/>
+        <column name="new_status" xsi:type="varchar" length="20"/>
+        <column name="changed_by" xsi:type="int" nullable="true" comment="Admin User ID"/>
+        <column name="created_at" xsi:type="timestamp" nullable="false" default="CURRENT_TIMESTAMP"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="entity_id"/>
         </constraint>
+        <constraint xsi:type="foreign"
+            referenceId="RETURN_STATUS_HISTORY_RETURN_ID"
+            table="vendor_return_status_history"
+            column="return_id"
+            referenceTable="vendor_return_request"
+            referenceColumn="return_id"
+            onDelete="CASCADE"/>
     </table>
 </schema>
