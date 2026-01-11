@@ -209,5 +209,22 @@ class ReturnRequest extends \Magento\Framework\Model\AbstractModel implements \M
     {
         return parent::getData(self::CREATED_AT);
     }
+
+    /**
+     * After Save
+     *
+     * @return \Vendor\ReturnRequest\Model\ReturnRequestInterface
+     */
+    protected function _afterSave()
+    {
+        parent::_afterSave();
+        if ($this->isObjectNew()) {
+            $this->_eventManager->dispatch(
+                'vendor_returnrequest_new',
+                ['return_request' => $this]
+            );
+        }
+        return $this;
+    }
 }
 

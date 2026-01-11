@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="vendor_returnrequest_new">
+        <observer name="send_returnrequest_email"
+                  instance="Vendor\ReturnRequest\Observer\SendNewReturnRequestEmail"/>
+    </event>
+</config>
