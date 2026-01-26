@@ -229,9 +229,9 @@ class ReturnRequest extends AbstractModel implements IdentityInterface, ReturnRe
      *
      * @return \Vendor\ReturnRequest\Model\ReturnRequest
      */
-    protected function _afterSave()
+    public function afterSave()
     {
-        parent::_afterSave();
+        parent::afterSave();
         if ($this->isObjectNew()) {
             $this->_eventManager->dispatch(
                 'vendor_returnrequest_new',
