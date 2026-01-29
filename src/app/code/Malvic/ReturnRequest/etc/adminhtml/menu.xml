@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Malvic Software Private Limited
+ *
+ * @author    Malvic Software Private Limited
+ * @copyright Malvic Software Private Limited
+ * @license   Malvic Software Private Limited
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Malvic_ReturnRequest::returnrequest" title="Return Request" module="Malvic_ReturnRequest" parent="Magento_Sales::sales" sortOrder="51" resource="Malvic_ReturnRequest::returnrequest" />
+        <add id="Malvic_ReturnRequest::listing" title="Return Request Listing" module="Malvic_ReturnRequest" parent="Malvic_ReturnRequest::returnrequest" sortOrder="10" action="returnrequest/request/listing" resource="Malvic_ReturnRequest::listing"/>
+    </menu>
+</config>

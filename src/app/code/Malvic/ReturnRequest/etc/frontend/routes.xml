@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Malvic Software Private Limited
+ *
+ * @author    Malvic Software Private Limited
+ * @copyright Malvic Software Private Limited
+ * @license   Malvic Software Private Limited
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="returnrequest" frontName="returnrequest">
+            <module name="Malvic_ReturnRequest" />
+        </route>
+    </router>
+</config>

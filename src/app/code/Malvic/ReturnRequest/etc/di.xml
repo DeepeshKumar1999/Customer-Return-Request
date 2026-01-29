@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Malvic Software Private Limited
+ *
+ * @author    Malvic Software Private Limited
+ * @copyright Malvic Software Private Limited
+ * @license   Malvic Software Private Limited
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <preference for="Malvic\ReturnRequest\Api\Data\ReturnRequestSearchResultInterface" type="Magento\Framework\Api\SearchResults"/>
+  <preference for="Malvic\ReturnRequest\Api\Data\ReturnRequestInterface" type="Malvic\ReturnRequest\Model\ReturnRequest"/>
+  <preference for="Malvic\ReturnRequest\Api\ReturnRequestRepositoryInterface" type="Malvic\ReturnRequest\Model\ReturnRequestRepository"/>
+
+  <preference for="Malvic\ReturnRequest\Api\Data\ReturnStatusHistorySearchResultInterface" type="Magento\Framework\Api\SearchResults"/>
+  <preference for="Malvic\ReturnRequest\Api\ReturnStatusHistoryInterface" type="Malvic\ReturnRequest\Model\ReturnStatusHistory"/>
+  <preference for="Malvic\ReturnRequest\Api\ReturnStatusHistoryRepositoryInterface" type="Malvic\ReturnRequest\Model\ReturnStatusHistoryRepository"/>
+
+  <type name="Malvic\ReturnRequest\Model\ReturnRequest">
+      <plugin
+          name="return_status_history_plugin"
+          type="Malvic\ReturnRequest\Plugin\ReturnStatusHistoryPlugin"/>
+  </type>
+</config>

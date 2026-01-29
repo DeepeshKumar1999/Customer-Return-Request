@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Malvic Software Private Limited
+ *
+ * @author    Malvic Software Private Limited
+ * @copyright Malvic Software Private Limited
+ * @license   Malvic Software Private Limited
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <referenceContainer name="sales.order.history.extra.column.header">
+            <block class="Magento\Framework\View\Element\Template"
+                name="return.request.column.header"
+                template="Malvic_ReturnRequest::order/return_header.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="sales.order.history.extra.container">
+            <block class="Malvic\ReturnRequest\Block\Order\ReturnColumn"
+                name="return.request.column"
+                template="Malvic_ReturnRequest::order/return_column.phtml"/>
+        </referenceBlock>
+    </body>
+</page>
