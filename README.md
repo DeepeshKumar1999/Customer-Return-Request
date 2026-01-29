@@ -33,10 +33,10 @@ Screenshots or screencast of the module are available in the `Screenshots Screen
 ## Installation Guide
 
 ### Method 1: Manual Installation (Recommended for Development)
-- Copy the module to Magento codebase: app/code/Vendor/ReturnRequest
+- Copy the module to Magento codebase: app/code/Malvic/ReturnRequest
 - Ensure folder permissions are correct.
 - Run the following Magento CLI commands:
-    php bin/magento module:enable Vendor_ReturnRequest
+    php bin/magento module:enable Malvic_ReturnRequest
     php bin/magento setup:upgrade
     php bin/magento setup:di:compile
     php bin/magento setup:static-content:deploy
@@ -47,7 +47,7 @@ Screenshots or screencast of the module are available in the `Screenshots Screen
 
 ### Method 2: ZIP Installation
 - Extract the ZIP file.
-- Place the Vendor/ReturnRequest directory inside: app/code/
+- Place the Malvic/ReturnRequest directory inside: app/code/
 - Run Magento upgrade commands (same as above).
 
 ## Configuration
@@ -61,8 +61,8 @@ Ensure access to Return Requests is enabled for the role.
 
 ## Database Tables
 ### The module creates custom tables using db_schema.xml, such as:
-- vendor_return_request
-- vendor_return_status_history
+- malvic_return_request
+- malvic_return_status_history
 
 ### These tables store:
 - Order ID
@@ -80,5 +80,15 @@ Developed by Deepesh Kumar
 Magento Developer
 
 ## License
-This module is provided for learning and internal project use.
-You are not allowed to modify or extend it as per your project needs.
+### Proprietary License – All Rights Reserved
+
+This software is the exclusive intellectual property of Malvic Software Private Limited.
+
+Unauthorized use, reproduction, modification, distribution, sublicensing, publication, or resale of this module—in whole or in part—is strictly prohibited.
+
+This module is provided solely for the personal, commercial, and professional use of the author and Malvic Software Private Limited.
+No individual, company, or organization is permitted to use this software for their own projects, commercial or non-commercial, without explicit written permission from the copyright holder.
+
+Any violation of these terms may result in legal action.
+
+© Malvic Software Private Limited. All rights reserved.
